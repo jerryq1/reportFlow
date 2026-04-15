@@ -1,0 +1,135 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.required {
+  color: var(--error);
+  margin-left: 2px;
+}
+
+.charCount {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: right;
+  margin-top: -4px;
+}
+
+/* Profession Combobox */
+.professionWrapper {
+  position: relative;
+}
+
+.professionInput {
+  cursor: text;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  z-index: 200;
+  max-height: 220px;
+  overflow-y: auto;
+  padding: 4px;
+}
+
+.dropdownItem {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text-primary);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+.dropdownItem:hover {
+  background: var(--bg-surface-hover);
+}
+
+.dropdownItemActive {
+  background: var(--bg-surface) !important;
+  font-weight: 600;
+}
+
+/* Template Toggle */
+.templateToggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: left;
+}
+.templateToggle:hover {
+  background: var(--bg-surface-hover);
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+}
+
+.chevron {
+  font-size: 14px;
+  color: var(--text-muted);
+  transition: transform var(--transition-normal);
+  margin-left: auto;
+}
+
+.templateBody {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.templateHint {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.templateActions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Generate Button */
+.generateBtn {
+  width: 100%;
+  margin-top: auto;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+}
+
+.loading {
+  animation: pulse-subtle 1.5s ease-in-out infinite;
+}

@@ -1,0 +1,56 @@
+.container {
+  position: relative;
+  display: flex;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 4px;
+  gap: 0;
+  width: fit-content;
+}
+
+.slider {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  background: var(--primary);
+  border-radius: 8px;
+  transition: transform var(--transition-normal);
+  pointer-events: none;
+}
+
+.option {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 22px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  transition: color var(--transition-normal);
+  min-width: 100px;
+  justify-content: center;
+  user-select: none;
+}
+
+.option:hover {
+  color: var(--text-secondary);
+}
+
+.option.active {
+  color: #ffffff;
+}
+
+.icon {
+  font-size: 15px;
+  line-height: 1;
+}
