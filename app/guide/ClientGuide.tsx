@@ -44,7 +44,7 @@ export default function ClientGuide({ content }: Props) {
               remarkPlugins={[remarkGfm]}
               components={{
                 img: ({ node, ...props }) => {
-                  const src = props.src?.startsWith('http') ? props.src : `/${props.src}`
+                  const src = typeof props.src === 'string' && props.src.startsWith('http') ? props.src : `/${props.src}`
                   return (
                     <span className={styles.imageWrapper} onClick={() => setZoomImg(src)}>
                       <img 
