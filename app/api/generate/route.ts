@@ -69,20 +69,26 @@ export async function POST(request: NextRequest) {
         }
 
         try {
+          let buffer = ''
           while (true) {
             const { done, value } = await reader.read()
             if (done) break
 
-            const chunk = decoder.decode(value, { stream: true })
-            const lines = chunk.split('\n')
+            buffer += decoder.decode(value, { stream: true })
+            const lines = buffer.split('\n')
+            // Keep the last incomplete line in the buffer
+            buffer = lines.pop() || ''
 
             for (const line of lines) {
-              if (!line.startsWith('data: ')) continue
-              const data = line.slice(6).trim()
+              const trimmedLine = line.trim()
+              if (!trimmedLine || !trimmedLine.startsWith('data: ')) continue
+              
+              const data = trimmedLine.slice(6).trim()
               if (data === '[DONE]') {
                 controller.enqueue(encoder.encode('data: [DONE]\n\n'))
                 continue
               }
+
               try {
                 const parsed = JSON.parse(data)
                 const delta = parsed.choices?.[0]?.delta?.content
@@ -91,7 +97,11 @@ export async function POST(request: NextRequest) {
                     encoder.encode(`data: ${JSON.stringify({ text: delta })}\n\n`)
                   )
                 }
-              } catch { }
+              } catch {
+                // If it's not valid JSON, it might be a part of a larger line
+                // but since we split by \n, this is unlikely unless the upstream sent it weirdly.
+                // We'll just ignore and keep going.
+              }
             }
           }
         } finally {
