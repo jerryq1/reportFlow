@@ -70,8 +70,49 @@
 .headerRight {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   flex-wrap: wrap;
+}
+
+.githubLink {
+  color: #ffffff;
+  background: #24292f; /* GitHub Brand Color */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  border: 1px solid #24292f;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: var(--shadow-sm);
+}
+
+.githubLink:hover {
+  background: #1a1e22;
+  border-color: #1a1e22;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.githubLink svg {
+  filter: drop-shadow(0 0 2px rgba(255,255,255,0.1));
+}
+
+.githubText {
+  display: inline;
+}
+
+@media (max-width: 600px) {
+  .githubText {
+    display: none;
+  }
+  .githubLink {
+    padding: 6px;
+    border-radius: 50%;
+  }
 }
 
 /* ─── Error Banner ─── */
